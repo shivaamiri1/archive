@@ -1,0 +1,4 @@
+db.sqlite3
+djangovenv
+__pycache__/
+ENV_DIR
