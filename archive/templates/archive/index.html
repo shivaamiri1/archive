@@ -1,6 +1,15 @@
 {% extends 'archive/base.html' %}
 
-{% block content %}
-  <p>You can archive your activities here!</p>
+{% block page_header %}
 
-{% endblock content %}
+  <div class="jumbotron">
+    <h1 class="display-4">You can archive your activities here!</h1>
+
+    <p class="lead">Make your own archive! and keep a list of the topics you're learning about. Whenever you learn something new about a topic, make an entry summarizing what you've learned.</p>
+
+
+    <a class="btn btn-lg btn-primary" href="{% url 'users:register' %}"
+      role="button">Register &raquo;</a>
+
+
+{% endblock page_header %}
