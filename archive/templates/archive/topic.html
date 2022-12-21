@@ -1,10 +1,10 @@
 {% extends 'archive/base.html' %}
 
+{% block page_header %}
+  <h3>{{ topic }}</h3>
+{% endblock page_header %}
+
 {% block content %}
-
-  <p>Topic: {{ topic }}</p>
-
-  <p>Entries:</p>
 
   <p>
     <a href="{% url 'archive:new_entry' topic.id %}">Add new entry </a>
@@ -12,17 +12,25 @@
 
   <ul>
 
-    {% for entry in entries%}
-      <li>
-        <p>{{ entry.date_added|date:'M d, Y H:i' }}</p>
-        <p>{{ entry.text|linebreaks }}</p>
-        <p>
+  {% for entry in entries%}
+    <div class="card mb-3">
+      <h4 class="card-header">
+        {{ entry.date_added|date:'M d, Y H:i' }}
+        <small>
           <a href="{% url 'archive:edit_entry' entry.id %}">Edit entry</a>
-        </p>
-      </li>
-    {% empty %}
-      <li> There are no entries for this topic yet.</li>
-    {% endfor %}
+        </small>
+      </h4>
+
+      <div class="card-body">
+        {{ entry.text|linebreaks }}
+      </div>
+
+    </div>
+  {% empty %}
+    <p>There are no entries for this topic yet.</p>
+
+  
+  {% endfor %}
 
 
 {% endblock content %}
